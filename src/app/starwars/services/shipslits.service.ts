@@ -2,6 +2,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
+import {map} from 'rxjs/operators';
+import { Observable } from 'rxjs';
+
+import { FetchShipResponse, starship } from '../interfaces/shipswars.interface';
+
 
 @Injectable({
    providedIn: 'root'
@@ -15,11 +20,29 @@ export class ShipslitsService {
    constructor(private http: HttpClient) { }
 
 
-   getAllShips() {
-     return this.http.get(` ${this.url}?page=1`); // definicion de un observable 
+   getAllShips( ): Observable<starship[]> {
 
+      return this.http.get<FetchShipResponse>(`${this.url}?page=1`)
+            .pipe( 
+               map( this.transBigStarShipsToStarship )
+            )
+      }
+
+      private transBigStarShipsToStarship( resp:FetchShipResponse ): starship[] {
+
+         const starShipList: starship [] =  resp.results.map( ship => {
+            return {
+               name: ship.name,
+               model: ship.model
+            }
+         }
+      );
+      return starShipList;
 
    }
+
+
+
 
 
    // Starships

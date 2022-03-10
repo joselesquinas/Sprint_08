@@ -6,16 +6,14 @@
 <table class="table"  >
    <thead>
       <tr>
-         <th>#</th>
          <th>Nombre</th>
          <th>Ship</th>
       </tr>
    </thead>
    <tbody>
-      <tr>
-         <th></th>
-         <th></th>
-         <th></th>        
+      <tr *ngFor="let ship of starships">
+         <th> {{ ship.name }} </th>
+         <th> {{ ship.model}} </th>        
       </tr>
    </tbody>
 </table>
