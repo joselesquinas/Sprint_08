@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+import { ShipslitsService } from '../services/shipslits.service';
+
+
 @Component({
   selector: 'app-art-ships',
   templateUrl: './art-ships.component.html',
@@ -7,9 +10,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ArtShipsComponent implements OnInit {
 
-  constructor() { }
+  constructor(  private  shipslitsService: ShipslitsService  ) { }
 
   ngOnInit(): void {
+
+   this.shipslitsService.getAllShips()
+         .subscribe( resp => {
+
+            console.log( resp );
+         });
+
   }
 
 }

@@ -8,12 +8,15 @@ import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
-    ArtCardComponent,
     ArtShipsComponent,
+    ArtCardComponent,
     HomeComponent
   ],
   imports: [
     CommonModule
+  ],
+  exports: [
+    ArtShipsComponent,
   ]
 })
 export class StarwarsModule { }
