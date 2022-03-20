@@ -1,20 +1,22 @@
-<p>art-ships works!</p>
 
-<h1 class="m-t 5" > listado Wars Ships </h1>
-<hr>
+<div>
+   <ul class="list-group mt-2 " 
+         *ngFor="let ship of starships" >
+      <li (click)="myShip( $event )" 
+            class="list-group-item">
+         <span Id="Contenido" Style="Display:none;">{{ ship.url }}</span>
+         
+         <p> {{ ship.name }} </p> 
+         <p> {{ ship.model}} </p>
+      </li> 
+   </ul>   
+</div> 
 
-<table class="table"  >
-   <thead>
-      <tr>
-         <th>Nombre</th>
-         <th>Ship</th>
-      </tr>
-   </thead>
-   <tbody>
-      <tr *ngFor="let ship of starships">
-         <th> {{ ship.name }} </th>
-         <th> {{ ship.model}} </th>        
-      </tr>
-   </tbody>
-</table>
- 
+<div class="row">
+   <div class="col">
+     <button class="btn btn-primary float-end"
+              (click)="moreShips()" >
+       Más Naves
+     </button>
+   </div>
+ </div>

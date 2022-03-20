@@ -1,5 +1,23 @@
-<h1>Que la fuerza te acompañe</h1>
 
-<app-art-ships> </app-art-ships>
+<div class="row container mt-4" id="div-app">
 
-<!--   <router-outlet></router-outlet>      -->
+   <div >
+      <app-header></app-header>
+   </div>
+
+   <div >
+      <app-nav></app-nav>
+   </div>
+
+   <div class="row">
+      <div class="col-3">
+      </div>
+      <div class="col-7">
+         <router-outlet></router-outlet>
+      </div>
+      <div class="col-2">
+      </div>
+   </div>
+
+
+</div>
