@@ -1,11 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-
 import { HomeComponent } from './starwars/home/home.component';
 import { ArtShipsComponent } from './starwars/art-ships/art-ships.component';
 import { ArtCardComponent } from './starwars/art-card/art-card.component';
-
 
 
 const routes: Routes = [
@@ -21,6 +19,10 @@ const routes: Routes = [
   {
     path: 'card/:idShip',
     component: ArtCardComponent,
+  },
+  {
+    path: 'auth',
+    loadChildren: () => import( './auth/auth.module' ).then( m => m.AuthModule )
   },
   {  
     path: '**',

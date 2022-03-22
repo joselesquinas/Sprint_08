@@ -12,7 +12,10 @@ import { cardShip } from '../interfaces/shipswars.interface';
 
 export class ArtCardComponent implements OnInit {
 
-  cardShips: any = [];
+   cardShips: any = [];
+  // public cardShips: cardShip [] = [];
+
+
   urlId: any = '0';
   
   constructor(  private  shipslitsService: ShipslitsService,
@@ -23,11 +26,22 @@ export class ArtCardComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
     this.shipslitsService.getCardShip()
     .subscribe(  (card) =>  {
-        this.cardShips = Object.entries(card);
+        this.cardShips = card;
+
+        // this.cardShips = Object.entries(card);
+        //this.cardShips =  card;
+        console.log(card);
         console.log(this.cardShips);
+
       })
+
+
+
+
+
   }   
     // https://starwars-visualguide.com/assets/img/starships/9.jpg
     // this.foto= https://starwars-visualguide.com/assets/img/starships/${urlId}.jpg

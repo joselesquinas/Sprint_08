@@ -42,8 +42,13 @@ export class ShipslitsService {
    }
 
    getCardShip(  ): Observable<cardShip[]> {
+
       const url = `${this.url}${this.idCardShip}/`;
-      return this.http.get<cardShip []>( url ) ;
+      let myCard =  this.http.get<cardShip[]>( url );
+      return myCard;
+
+
+      //  return this.http.get<cardShip[]>( url ) ;
     }
 
 /*
@@ -52,11 +57,10 @@ export class ShipslitsService {
       .pipe( 
          map( this.transShipsToCard )
       )
-
    }
 
-   private transShipsToCard( resp:FetchShipResponse ): cardShip[] {
-      const cardList: cardShip [] =  resp.results.map( card => {
+   private transShipsToCard( resp: FetchShipResponse ): cardShip[] {
+      const cardList cardShip [] =  resp.results.map!( card => {
          return {
             name                   : card.name,
             model                  : card.model,
@@ -66,11 +70,11 @@ export class ShipslitsService {
             max_atmosphering_speed : card.max_atmosphering_speed,
             crew                   : card.crew,
          }
-      } );
+      });
       return cardList;
    }
-
 */
+
    // Starships
    // https://starwars-visualguide.com/#/starships/15
    //  https://starwars-visualguide.com/assets/img/starships/9.jpg

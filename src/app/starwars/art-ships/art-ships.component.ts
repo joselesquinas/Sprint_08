@@ -26,7 +26,6 @@ export class ArtShipsComponent implements OnInit {
                // console.log(ships);
                this.starships =  ships;
             });
-            
    }
 
    myShip( e: Event ): void {
@@ -51,6 +50,7 @@ export class ArtShipsComponent implements OnInit {
       .subscribe( ships => {
          this.starships =  ships;
       });
+      
    }
 
 

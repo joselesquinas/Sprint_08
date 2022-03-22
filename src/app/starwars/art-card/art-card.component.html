@@ -5,41 +5,52 @@
 </div>
 
 <div class="row  m-5">
-   <h1> {{cardShips[0][1]}} </h1>
+   <h1> {{cardShips.name}} </h1>  
+   <br/>
    <div class="col m-2">
-
+   
       <table>
          <tr>
              <td>Model:</td>
-             <td>{{cardShips[1][1]}} </td>
+             <td>{{ cardShips.model }} </td>
          </tr>
          <tr>
             <td>Fabricante:</td>
-            <td>{{cardShips[2][1]}} </td>
+            <td>{{cardShips.manufacturer}} </td>
         </tr>
          <tr>
              <td>Coste fabricación:</td>
-             <td>{{cardShips[3][1]}}Creditos estelares.</td>
+             <td>{{cardShips.cost_in_credits}} <span>Creditos estelares.</span> </td>
          </tr>
          <tr>
             <td>Longitud:</td>
-            <td>{{cardShips[4][1]}}m.</td>
+            <td>{{cardShips.length}} <span>m.</span>  </td>
         </tr>
          <tr>
              <td>Velocidad Max, ():</td>
-             <td>{{cardShips[5][1]}}atm.</td>
+             <td>{{cardShips.max_atmosphering_speed}} <span>atm.</span> </td>
          </tr>
          <tr>
             <td>Tripulación:</td>
-            <td>{{cardShips[6][1]}};</td>
+            <td>{{cardShips.crew}};</td>
         </tr>
         <tr>
          <td>Pasajeros:</td>
-         <td>{{cardShips[7][1]}} </td>
+         <td>{{cardShips.passengers}} </td>
        </tr>
-
+       <tr>
+         <td>Hiperimpulsor:</td>
+         <td>{{cardShips.hyperdrive_rating}};</td>
+     </tr>
+     <tr>
+      <td>MGLT:</td>
+      <td>{{cardShips.MGLT}} <span>Megaluz</span> </td>
+    </tr>
      </table>
-
+   
    </div>
-
+<br/>
 </div>
+
+
+
