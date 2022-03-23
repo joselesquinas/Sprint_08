@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { ValidatorService } from '../../../shared/validator/validator.service';
+import { RegistroService } from '../../services/registro.service';
 
 @Component({
   selector: 'app-registro',
@@ -10,6 +11,8 @@ import { ValidatorService } from '../../../shared/validator/validator.service';
 })
 
 export class RegistroComponent implements OnInit {
+
+  key: string = '';
 
   miFormulario: FormGroup = this.fb.group({
     nombre: [ '', [Validators.required, Validators.pattern( this.validatorService.nombreApellidoPattern ) ] ],
@@ -22,16 +25,12 @@ export class RegistroComponent implements OnInit {
   })
 
   constructor( private fb: FormBuilder, 
-               private validatorService: ValidatorService ) { }
+               private validatorService: ValidatorService,
+               private registroService: RegistroService ) { }
 
   ngOnInit(): void {
-
     this.miFormulario.reset({
-        //  nombre: 'lolo mela',
-        //  email: 'test1@test.com',
-        //  username: 'fernando_her85'
     })
-
   }
 
   campoNoValido( campo: string ) {
@@ -46,6 +45,29 @@ export class RegistroComponent implements OnInit {
     this.miFormulario.markAllAsTouched();
   }
 
+
+  guardar() {
+    if ( this.miFormulario.invalid) { 
+      this.miFormulario.markAllAsTouched();
+      return;
+    }
+
+    let registroForm = {
+      nombre    : this.miFormulario.controls['nombre'].value,
+      email     : this.miFormulario.controls['email'].value,
+      username  : this.miFormulario.controls['username'].value,
+      password  : this.miFormulario.controls['password'].value,
+      password2 : this.miFormulario.controls['password2'].value,   
+    }
+ 
+    this.key = this.miFormulario.controls['email'].value;
+
+    this.registroService.grabar_LocalStorage( this.key, registroForm );
+    this.miFormulario.reset();
+
+    return false;
+
+  }
 
 
 }

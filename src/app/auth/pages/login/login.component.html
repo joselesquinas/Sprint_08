@@ -6,7 +6,7 @@
 
       <form autocomplete="off" 
             [formGroup]="miFormulario" 
-            (ngSubmit)="submitLogin()"  >
+            (ngSubmit)="submitFormulario()"  >
       <br/>
          <!-- Email -->
          <div class="row mb-3">
@@ -16,6 +16,11 @@
                       class="form-control" 
                       formControlName="email"
                       placeholder="Email del usuario">
+                      <span class="form-text text-danger"
+                      *ngIf="campoNoValido('email')" >
+                         El correo es obligatorio.
+                      </span>
+
             </div>
          </div>
 
@@ -27,6 +32,10 @@
                       class="form-control" 
                       formControlName="password"
                       placeholder="Password de su cuenta">
+               <span class="form-text text-danger"
+                  *ngIf="campoNoValido('password')" >
+                     La contraseña debe de ser mayor de 6 caracteres.
+               </span> 
  
             </div>
          </div>         
@@ -34,6 +43,7 @@
             <div class="col">
                   <button  class="btn btn-primary float-end" 
                            [disabled]="miFormulario.pending"
+                           (click)="submitLogin()"
                            type="submit" >
                            LOG IN
                   </button>
