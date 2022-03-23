@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+
 
 import { RegistroService } from '../../services/registro.service';
 import { ValidatorService } from '../../../shared/validator/validator.service';
 import { Forms } from '../../interfaces/forms.interface';
+
 
 @Component({
   selector: 'app-login',
@@ -25,7 +28,8 @@ export class LoginComponent implements OnInit {
 
   constructor(  private fb: FormBuilder, 
                 private validatorService: ValidatorService,
-                private registroService: RegistroService) { }
+                private registroService: RegistroService,
+                private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -54,7 +58,7 @@ export class LoginComponent implements OnInit {
 
     if ( localStorage.getItem( this.keyLogin ) === null ) {
       alert("Te tienes que registrar");
-
+      this.router.navigate(['./auth/registro']);
     } else {
      // console.log( "df  "+ this.registroService.obtener_LocalStorage( key )  );
      this.myData = this.registroService.obtener_LocalStorage( this.keyLogin ) ;
