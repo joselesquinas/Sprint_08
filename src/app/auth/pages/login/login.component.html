@@ -1,1 +1,48 @@
-<p>login works!</p>
+<br />
+<h2>Login:</h2>
+<hr>
+<div class="row formulario">
+   <div class="col ">
+
+      <form autocomplete="off" 
+            [formGroup]="miFormulario" 
+            (ngSubmit)="submitLogin()"  >
+      <br/>
+         <!-- Email -->
+         <div class="row mb-3">
+            <label class="col-sm-3 col-form-label">Email</label>
+            <div class="col-sm-9">
+               <input type="email" 
+                      class="form-control" 
+                      formControlName="email"
+                      placeholder="Email del usuario">
+            </div>
+         </div>
+
+         <!-- Password -->
+         <div class="row mb-3">
+            <label class="col-sm-3 col-form-label">Password</label>
+            <div class="col-sm-9">
+               <input type="Password" 
+                      class="form-control" 
+                      formControlName="password"
+                      placeholder="Password de su cuenta">
+ 
+            </div>
+         </div>         
+         <div class="row">
+            <div class="col">
+                  <button  class="btn btn-primary float-end" 
+                           [disabled]="miFormulario.pending"
+                           type="submit" >
+                           LOG IN
+                  </button>
+            </div>
+         </div>
+         <br/>
+         <br/>
+      </form>
+     
+   </div>
+</div>
+<h2></h2>

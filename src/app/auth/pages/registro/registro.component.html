@@ -1,4 +1,5 @@
-<h2> Validaciones Registro</h2>
+<br/>
+<h2>Registro:</h2>
 <hr>
 
 <div class="row formulario">
@@ -60,7 +61,13 @@
             <div class="col-sm-9">
                <input type="Password" 
                       class="form-control" 
+                      formControlName="password"
                       placeholder="Password de su cuenta">
+               <span class="form-text text-danger"
+               *ngIf="campoNoValido('password')" >
+                  La contraseña debe de ser mayor de 6 caracteres.
+               </span> 
+ 
             </div>
          </div>
 
@@ -71,18 +78,25 @@
             <div class="col-sm-9">
                <input type="Password" 
                       class="form-control" 
+                      formControlName="password2"
                       placeholder="Confirmar la contraseña">
+               <span class="form-text text-danger"
+                     *ngIf="campoNoValido('password2')" >
+                        Las contraseñas deben de ser iguales.
+               </span>
             </div>
          </div>
 
          <div class="row">
             <div class="col">
-                  <button class="btn btn-primary float-end" 
-                          type="submit" >
-                        Crear
+                  <button  class="btn btn-primary float-end" 
+                           [disabled]="miFormulario.pending"
+                           type="submit" >
+                        sdfdsf
                   </button>
             </div>
          </div>
+         <br/>
 
       </form>
 
