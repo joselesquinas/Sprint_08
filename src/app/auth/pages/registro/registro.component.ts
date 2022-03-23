@@ -39,12 +39,9 @@ export class RegistroComponent implements OnInit {
   }
 
   submitFormulario() {
-
-    console.log( this.miFormulario.value );
-
+    // console.log( this.miFormulario.value );
     this.miFormulario.markAllAsTouched();
   }
-
 
   guardar() {
     if ( this.miFormulario.invalid) { 
@@ -62,9 +59,12 @@ export class RegistroComponent implements OnInit {
  
     this.key = this.miFormulario.controls['email'].value;
 
+    ( this.miFormulario.valid == true ) 
+            ? this.registroService.grabar_LocalStorage( this.key, registroForm )
+            : this.miFormulario.reset();
+
     this.registroService.grabar_LocalStorage( this.key, registroForm );
     this.miFormulario.reset();
-
     return false;
 
   }

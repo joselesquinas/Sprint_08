@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 
-import { Forms } from '../interfaces/forms';
+import { Forms } from '../interfaces/forms.interface';
 
 
 @Injectable({
@@ -11,16 +11,13 @@ import { Forms } from '../interfaces/forms';
 
 export class RegistroService {
 
-  key: string = '';
   registro: Forms[] = [];
 
   constructor() { }
 
-
-
-  obtener_LocalStorage(): any {
+  obtener_LocalStorage( key: string  ): any {
     try {
-      return localStorage.getItem(this.key);
+      return JSON.parse(localStorage.getItem( key )!);
     } catch (e) {
       console.log(e);
     }

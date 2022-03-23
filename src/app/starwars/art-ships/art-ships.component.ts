@@ -38,7 +38,6 @@ export class ArtShipsComponent implements OnInit {
 
 
    moreShips() {
-      
       let x = Number(this.shipslitsService.idPage);
       if (  x < 4) {
          this.shipslitsService.idPage = (x + 1).toString();

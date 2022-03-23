@@ -39,7 +39,6 @@ export class ShipslitsService {
    }
 
    getCardShip(  ): Observable<cardShip[]> {
-
       const url = `${this.url}${this.idCardShip}/`;
       let myCard =  this.http.get<cardShip[]>( url );
       return myCard;

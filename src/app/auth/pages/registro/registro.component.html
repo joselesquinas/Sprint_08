@@ -17,7 +17,7 @@
                       class="form-control" 
                       formControlName="nombre"
                       placeholder="Nombre del usuario">
-               <span class="form-text text-danger"
+               <span class="form-text "
                      *ngIf="campoNoValido('nombre')" >
                   Debe de ser en formato de nombre y apellido.
                </span>
@@ -32,7 +32,7 @@
                       class="form-control" 
                       formControlName="email"
                       placeholder="Email del usuario">
-               <span class="form-text text-danger"
+               <span class="form-text "
                *ngIf="campoNoValido('email')" >
                   El correo es obligatorio.
                </span>
@@ -48,7 +48,7 @@
                       class="form-control" 
                       formControlName="username"
                       placeholder="Nombre código del usuario">
-               <span class="form-text text-danger"
+               <span class="form-text "
                *ngIf="campoNoValido('username')" >
                   El username no puede ser Strider.
                </span>                     
@@ -63,7 +63,7 @@
                       class="form-control" 
                       formControlName="password"
                       placeholder="Password de su cuenta">
-               <span class="form-text text-danger"
+               <span class="form-text "
                *ngIf="campoNoValido('password')" >
                   La contraseña debe de ser mayor de 6 caracteres.
                </span> 
@@ -80,7 +80,7 @@
                       class="form-control" 
                       formControlName="password2"
                       placeholder="Confirmar la contraseña">
-               <span class="form-text text-danger"
+               <span class="form-text "
                      *ngIf="campoNoValido('password2')" >
                         Las contraseñas deben de ser iguales.
                </span>
@@ -89,11 +89,11 @@
 
          <div class="row">
             <div class="col">
-                  <button  class="btn btn-primary float-end" 
+                  <button  class="btn btn-dark float-end" 
                            [disabled]="miFormulario.pending"
                            (click)="guardar()"
                            type="submit" >
-                        Registrar
+                        SIGN UP
                   </button>
             </div>
          </div>

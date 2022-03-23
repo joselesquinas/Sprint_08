@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { RegistroService } from '../../services/registro.service';
 import { ValidatorService } from '../../../shared/validator/validator.service';
+import { Forms } from '../../interfaces/forms.interface';
 
 @Component({
   selector: 'app-login',
@@ -11,8 +12,10 @@ import { ValidatorService } from '../../../shared/validator/validator.service';
 })
 export class LoginComponent implements OnInit {
 
-  keyLogin   : string = '';
-  keyPassword: string = '';
+  keyLogin   : string   = '';
+  keyPassword: string   = '';
+  myData     : Forms [] = [];
+  validoLogin: boolean  = false;
 
   miFormulario: FormGroup = this.fb.group({
     email: [ '', [Validators.required, Validators.pattern( this.validatorService.emailPattern ) ] ],
@@ -37,38 +40,42 @@ export class LoginComponent implements OnInit {
     this.miFormulario.markAllAsTouched();
   }
 
+  loginNoValido() {
+    return this.validoLogin;
+  }
   
-  estaLogin( key: string ) {
-    if ( localStorage.getItem( this.keyLogin) === null ) {
-       //console.log('NO Esta creada la key: ' + this.keyPtto);
-       alert("Te tienes que registrar");
+ 
+  submitLogin() {
+    this.keyLogin    = this.miFormulario.controls['email'].value;
+    this.keyPassword = this.miFormulario.controls['password'].value;
+
+    console.log('email entregado  ' + this.keyLogin);
+    console.log('Password entregado  ' + this.keyPassword);
+
+    if ( localStorage.getItem( this.keyLogin ) === null ) {
+      alert("Te tienes que registrar");
 
     } else {
-
-      this.registroService.obtener_LocalStorage();
-
-      if ( this.keyLogin === 'test1@test.com' 
-              && this.keyPassword === '') {};
-      console.log(this.keyLogin);
-      alert('esta logeado');
-    }
-
- }
-
-  submitLogin() {
-    this.keyLogin = this.miFormulario.controls['email'].value;
-    this.keyPassword = this.miFormulario.controls['password'].value;
-    this.estaLogin ( this.keyLogin );
-
+     // console.log( "df  "+ this.registroService.obtener_LocalStorage( key )  );
+     this.myData = this.registroService.obtener_LocalStorage( this.keyLogin ) ;
+     
+     // console.log(Object.values(this.myData) ) ;
+     for(const [key, value] of Object.entries(this.myData)){
+       console.log(key + value.email );
+       if ( this.keyLogin === value.email  &&  this.keyPassword === value.password ) {
+          console.log(" Esta logeado " );
+          this.validoLogin = true;
+          this.loginNoValido();
+       } else {
+          console.log("El Email o el password estan incorrectos " );
+       }
+     }
+    
+    };
 
     this.miFormulario.reset();
-    // this.registroService.obtener_LocalStorage
-    
-  }
-
-
-
-
-
+    //this.validoLogin = false;
+    return false;
+  };
   
-}
+};

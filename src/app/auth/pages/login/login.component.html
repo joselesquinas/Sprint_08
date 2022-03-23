@@ -16,7 +16,7 @@
                       class="form-control" 
                       formControlName="email"
                       placeholder="Email del usuario">
-                      <span class="form-text text-danger"
+                      <span class="form-text "
                       *ngIf="campoNoValido('email')" >
                          El correo es obligatorio.
                       </span>
@@ -32,7 +32,7 @@
                       class="form-control" 
                       formControlName="password"
                       placeholder="Password de su cuenta">
-               <span class="form-text text-danger"
+               <span class="form-text"
                   *ngIf="campoNoValido('password')" >
                      La contraseña debe de ser mayor de 6 caracteres.
                </span> 
@@ -41,14 +41,21 @@
          </div>         
          <div class="row">
             <div class="col">
-                  <button  class="btn btn-primary float-end" 
+                  <button  class="btn btn-dark float-end" 
                            [disabled]="miFormulario.pending"
                            (click)="submitLogin()"
                            type="submit" >
                            LOG IN
                   </button>
             </div>
-         </div>
+            <br/>
+
+            <span  class="form-text"
+                  *ngIf="loginNoValido()">
+                  Esta logeado.
+            </span>
+
+            </div>
          <br/>
          <br/>
       </form>
