@@ -1,43 +1,33 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { HomeComponent } from './starwars/home/home.component';
-import { ArtShipsComponent } from './starwars/art-ships/art-ships.component';
-import { ArtCardComponent } from './starwars/art-card/art-card.component';
-
+// import { ArtShipsComponent } from './starwars/pages/art-ships/art-ships.component';
+// import { ArtCardComponent } from './starwars/pages/art-card/art-card.component';
+import { HomeComponent } from './starwars/pages/home/home.component';
 
 const routes: Routes = [
-  {
-    path:'',
-    component:  HomeComponent,
-    pathMatch: 'full'
-  },
-  {
-    path: 'ships',
-    component: ArtShipsComponent,
-  },
-  {
-    path: 'card/:idShip',
-    component: ArtCardComponent,
-  },
+ ///  {
+ ///    path: 'home',
+ ///    component: HomeComponent,
+ ///  },
   {
     path: 'auth',
-    loadChildren: () => import( './auth/auth.module' ).then( m => m.AuthModule )
+    loadChildren: () => import( './auth/auth.module' ).then( m => m.AuthModule ),
+  },
+  {
+    path: 'starwars',
+    loadChildren: () => import( './starwars/starwars.module').then( m => m.StarwarsModule )
   },
   {  
     path: '**',
-    redirectTo: ''
- },
-
-
+    redirectTo: '404'
+  }
 ];
  
-
 
 @NgModule({
   imports: [RouterModule.forRoot( routes )],
   exports: [RouterModule]
 })
-
 
 export class AppRoutingModule { }

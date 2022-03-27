@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { ValidatorService } from '../../../shared/validator/validator.service';
 import { RegistroService } from '../../services/registro.service';
@@ -13,6 +14,7 @@ import { RegistroService } from '../../services/registro.service';
 export class RegistroComponent implements OnInit {
 
   key: string = '';
+  registro: string = 'Registro para acceder.'
 
   miFormulario: FormGroup = this.fb.group({
     nombre: [ '', [Validators.required, Validators.pattern( this.validatorService.nombreApellidoPattern ) ] ],
@@ -26,7 +28,8 @@ export class RegistroComponent implements OnInit {
 
   constructor( private fb: FormBuilder, 
                private validatorService: ValidatorService,
-               private registroService: RegistroService ) { }
+               private registroService: RegistroService,
+               private router: Router ) { }
 
   ngOnInit(): void {
     this.miFormulario.reset({
@@ -59,12 +62,18 @@ export class RegistroComponent implements OnInit {
  
     this.key = this.miFormulario.controls['email'].value;
 
-    ( this.miFormulario.valid == true ) 
-            ? this.registroService.grabar_LocalStorage( this.key, registroForm )
-            : this.miFormulario.reset();
-
-    this.registroService.grabar_LocalStorage( this.key, registroForm );
-    this.miFormulario.reset();
+    
+    if (this.miFormulario.valid) {
+      this.registroService.grabar_LocalStorage( this.key, registroForm );  
+      this.miFormulario.reset();
+      this.registro = 'Registro correcto';
+      // Ir a login
+      // this.router.navigate(['./auth/login']);
+    }
+    else{
+      alert("No reallizado el resgistro.")
+    }
+    
     return false;
 
   }

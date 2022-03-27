@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { ShipslitsService } from '../services/shipslits.service';
-import { starship } from '../interfaces/shipswars.interface';
+import { ShipslitsService } from '../../services/shipslits.service';
+import { starship } from '../../interfaces/shipswars.interface';
 
 
 @Component({
@@ -31,9 +31,9 @@ export class ArtShipsComponent implements OnInit {
    myShip( e: Event ): void {
       const value = e.currentTarget as HTMLOListElement ;
       this.idShip = value.children[0].textContent!.match(this.regex)!;
-      this.route.navigate(['/card', Number(this.idShip) ]);
-      // console.log( value.children[0].textContent );
-      // console.log(this.starships);  
+      this.route.navigate(['./starwars/card', Number(this.idShip) ]);
+       console.log(  this.idShip  );
+       console.log(this.starships);  
    }
 
 

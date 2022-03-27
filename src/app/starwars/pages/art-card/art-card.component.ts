@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute }  from '@angular/router'
 
-import { ShipslitsService } from '../services/shipslits.service';
-import { cardShip } from '../interfaces/shipswars.interface';
+import { ShipslitsService } from '../../services/shipslits.service';
+import { cardShip } from '../../interfaces/shipswars.interface';
 
 @Component({
   selector: 'app-art-card',
@@ -37,10 +37,6 @@ export class ArtCardComponent implements OnInit {
         console.log(this.cardShips);
 
       })
-
-
-
-
 
   }   
     // https://starwars-visualguide.com/assets/img/starships/9.jpg

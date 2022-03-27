@@ -47,8 +47,7 @@ export class LoginComponent implements OnInit {
   loginNoValido() {
     return this.validoLogin;
   }
-  
- 
+   
   submitLogin() {
     this.keyLogin    = this.miFormulario.controls['email'].value;
     this.keyPassword = this.miFormulario.controls['password'].value;
@@ -78,7 +77,13 @@ export class LoginComponent implements OnInit {
     };
 
     this.miFormulario.reset();
-    //this.validoLogin = false;
+
+    if ( this.loginNoValido() ) {
+      this.router.navigate(['./starwars/listado']);
+    } else {
+      this.validoLogin = false;
+    }
+
     return false;
   };
   

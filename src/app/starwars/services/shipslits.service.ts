@@ -16,7 +16,7 @@ export class ShipslitsService {
 
    private url      : string = 'https://swapi.dev/api/starships/';
    public idPage    : string = '1';
-   public idCardShip: string = '0';
+   public idCardShip: string = '';
 
    constructor(private http: HttpClient) { }
 
